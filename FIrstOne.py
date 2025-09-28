@@ -1,15 +1,33 @@
-#Madlibs game
-#Word game where you create a story
-#by filling in blanks with random words
+def calculate_average(numbers):
+    """Calculate the average of a list of numbers."""
+    if not numbers:
+        return 0
+    total = sum(numbers)
+    count = len(numbers)
+    return total / count
 
-adjective1 = input("Enter an adjective (description): ")
-noun1= input("Enter a noun (person, place, thing): ")
-adjective2 = input("Enter an adjective (description): ")
-verb1 = input("Enter a verb ending with 'ing' : ")
-adjective3 = input("Enter an adjective (description): ")
 
-print(f"Today I went to a {adjective1} zoo.")
-print(f"In an exhibit, I saw a {noun1} .")
-print(f"{noun1} was {adjective2} and {verb1} .")
-print(f"I was {adjective3} .")
+# Main execution
+if __name__ == "__main__":
+    # Get test scores from user
+    print("Enter test scores one by one (type 'done' when finished):")
+    test_scores = []
 
+    while True:
+        user_input = input("Enter a test score: ")
+        if user_input.lower() == 'done':
+            break
+        try:
+            score = float(user_input)
+            test_scores.append(score)
+            print(f"Added score: {score}")
+        except ValueError:
+            print("Please enter a valid number or 'done' to finish")
+
+    # Calculate and display average
+    if test_scores:
+        average_score = calculate_average(test_scores)
+        print(f"\nAll scores: {test_scores}")
+        print(f"The average test score is: {average_score:.2f}")
+    else:
+        print("No scores were entered.")
